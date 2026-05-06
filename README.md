@@ -17,6 +17,7 @@ LIFE.EXE is a browser-based achievement system built for real life — inspired 
 - 💾 **Persistent progress** saved locally in your browser — no login required
 - 🔍 **Filter, search, and sort** by rarity, category, status, and XP value
 - 🌑 **Dark futuristic HUD aesthetic** — looks like a game dashboard, not a to-do list
+- 🧱 **Easy To Expand** - The code is modular allowing easy achivement additions!
 
 ---
 
@@ -30,7 +31,7 @@ style.css
 script.js
 ```
 
-Or visit the live version: **[your-link-here]**
+Or visit the live version: **https://captain-aj.github.io/LIFE.EXE**
 
 ---
 
@@ -86,3 +87,11 @@ All data is stored exclusively in your browser's `localStorage`. Nothing is sent
 ---
 
 *Because life deserves a better UI.*
+
+---
+
+## 💬 Notice
+
+Please keep in mind that this is still a work in progress, lol. Feel free to make pull requests or suggest changes. This would also increase the "humanity" of the project, XD. So uh, GO THINK OF IDEAS OR SOMETHING.
+
+God Bless!
