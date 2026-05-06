@@ -1,4 +1,4 @@
-# 🏆 LIFE.EXE — Real Life Achievement Tracker
+# 🏆 LIFE.EXE — Real Life Achievement Tracker Made With Claude.ai
 
 **Gamify your existence. Track your journey. Level up for real.**
 
