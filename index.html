@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE.EXE — Real Life Achievement Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scanline overlay -->
+  <div class="scanlines"></div>
+  <div class="grid-bg"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" aria-live="polite">
+    <div class="toast-icon">🏆</div>
+    <div class="toast-body">
+      <div class="toast-label">ACHIEVEMENT UNLOCKED</div>
+      <div class="toast-title" id="toast-title"></div>
+      <div class="toast-xp" id="toast-xp"></div>
+    </div>
+    <div class="toast-rarity-bar" id="toast-rarity-bar"></div>
+  </div>
+
+  <!-- Header HUD -->
+  <header class="hud-header">
+    <div class="hud-logo">
+      <span class="logo-bracket">[</span>
+      LIFE<span class="logo-accent">.EXE</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <div class="hud-stats">
+      <div class="stat-block">
+        <div class="stat-label">PLAYER</div>
+        <div class="stat-value" id="player-name">UNKNOWN</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">LEVEL</div>
+        <div class="stat-value" id="player-level">01</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">XP</div>
+        <div class="stat-value" id="player-xp">0</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">UNLOCKED</div>
+        <div class="stat-value" id="unlocked-count">0 / 100</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">COMPLETION</div>
+        <div class="stat-value" id="completion-pct">0%</div>
+      </div>
+    </div>
+    <button class="btn-settings" id="btn-settings" title="Settings">⚙</button>
+  </header>
+
+  <!-- XP Progress Bar -->
+  <div class="xp-bar-wrap">
+    <div class="xp-bar-track">
+      <div class="xp-bar-fill" id="xp-bar-fill"></div>
+      <div class="xp-bar-label" id="xp-bar-label">XP TO NEXT LEVEL</div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <main class="main-layout">
+
+    <!-- Sidebar filters -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">FILTER RARITY</div>
+        <button class="filter-btn active" data-rarity="all">ALL</button>
+        <button class="filter-btn common" data-rarity="common">◆ COMMON</button>
+        <button class="filter-btn rare" data-rarity="rare">◆ RARE</button>
+        <button class="filter-btn epic" data-rarity="epic">◆ EPIC</button>
+        <button class="filter-btn legendary" data-rarity="legendary">◆ LEGENDARY</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">FILTER CATEGORY</div>
+        <button class="filter-btn active-cat" data-cat="all">ALL</button>
+        <button class="filter-btn" data-cat="early">🍼 EARLY LIFE</button>
+        <button class="filter-btn" data-cat="social">👥 SOCIAL</button>
+        <button class="filter-btn" data-cat="education">📚 EDUCATION</button>
+        <button class="filter-btn" data-cat="skills">🛠 SKILLS</button>
+        <button class="filter-btn" data-cat="emotional">❤ EMOTIONAL</button>
+        <button class="filter-btn" data-cat="life">🌍 LIFE</button>
+        <button class="filter-btn" data-cat="health">💪 HEALTH</button>
+        <button class="filter-btn" data-cat="creative">🎨 CREATIVE</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">SHOW STATUS</div>
+        <button class="filter-btn active-status" data-status="all">ALL</button>
+        <button class="filter-btn" data-status="locked">🔒 LOCKED</button>
+        <button class="filter-btn" data-status="unlocked">✔ UNLOCKED</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">SEARCH</div>
+        <input type="text" id="search-input" class="search-box" placeholder="Search achievements..." />
+      </div>
+
+      <!-- Mini stats -->
+      <div class="sidebar-stats">
+        <div class="mini-stat"><span class="common-text">◆ Common</span><span id="stat-common">0</span></div>
+        <div class="mini-stat"><span class="rare-text">◆ Rare</span><span id="stat-rare">0</span></div>
+        <div class="mini-stat"><span class="epic-text">◆ Epic</span><span id="stat-epic">0</span></div>
+        <div class="mini-stat"><span class="legendary-text">◆ Legendary</span><span id="stat-legendary">0</span></div>
+      </div>
+    </aside>
+
+    <!-- Achievement Grid -->
+    <section class="achievement-area">
+      <div class="area-header">
+        <div class="area-title" id="area-title">ALL ACHIEVEMENTS</div>
+        <div class="sort-wrap">
+          <label class="sort-label">SORT:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="default">Default</option>
+            <option value="rarity">Rarity</option>
+            <option value="unlocked">Unlocked First</option>
+            <option value="locked">Locked First</option>
+            <option value="xp">XP Value</option>
+          </select>
+        </div>
+      </div>
+      <div class="achievement-grid" id="achievement-grid"></div>
+    </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-title">PLAYER SETTINGS</div>
+      <label class="modal-label">Player Name</label>
+      <input type="text" id="name-input" class="modal-input" placeholder="Enter your name..." maxlength="24"/>
+      <div class="modal-actions">
+        <button class="btn-primary" id="btn-save-name">SAVE</button>
+        <button class="btn-danger" id="btn-reset">RESET ALL DATA</button>
+        <button class="btn-secondary" id="btn-close-modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
