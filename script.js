@@ -255,7 +255,7 @@ const ACHIEVEMENTS = [
   { id:'em13', cat:'emotional', icon:'🎭', name:'Mask Off',             desc:'Stop pretending to be someone you\'re not.',                 rarity:'epic'   },
   { id:'em14', cat:'emotional', icon:'🧩', name:'Puzzle Piece Found',   desc:'Find clarity on something that confused you for years.',     rarity:'rare'   },
   { id:'em15', cat:'emotional', icon:'🌅', name:'New Chapter',          desc:'Consciously close a chapter of your life and start fresh.',  rarity:'rare'   },
-  { id:'em16', cat:'emotional', icon:'🔮', name:'Future Visionary',     desc:'Write out a clear vision for your future and believe it.',   rarity:'rare'   },
+  { id:'em16', cat:'emotional', icon:'📝', name:'Future Visionary',     desc:'Write out a clear vision for your future and believe it.',   rarity:'rare'   },
   { id:'em17', cat:'emotional', icon:'🧯', name:'Anger Managed',        desc:'Handle anger in a healthy, constructive way.',               rarity:'rare'   },
   { id:'em18', cat:'emotional', icon:'💛', name:'Gratitude Practice',   desc:'Maintain a gratitude journal for 30+ days.',                 rarity:'rare'   },
   { id:'em19', cat:'emotional', icon:'🔗', name:'Healthy Boundaries',   desc:'Set and maintain a healthy boundary with someone.',          rarity:'rare'   },
